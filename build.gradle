@@ -19,6 +19,13 @@ allprojects {
         google()
         jcenter()
     }
+
+    ext {
+        retrofitVersion = '2.9.0'
+        rxJavaVersion = '2.1.1'
+        materialVersion = '1.2.1'
+        lifecycleVersion = '2.2.0'
+    }
 }
 
 task clean(type: Delete) {
