@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    tools:context=".fragments.ForecastFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/errorView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/error_load_weather"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </FrameLayout>
+
+        <ScrollView
+            android:id="@+id/weatherDataView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/imgPin"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="32dp"
+                    android:src="@drawable/ic_pin"
+                    app:layout_constraintEnd_toStartOf="@+id/txtCity"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/imgPin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imgPin"
+                    app:layout_constraintTop_toBottomOf="@+id/imgPin"
+                    tools:text="Curitiba" />
+
+                <TextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:textSize="28sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgPin"
+                    tools:text="Nublado" />
+
+                <TextView
+                    android:id="@+id/txtTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="42sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDescription"
+                    tools:text="22" />
+
+                <TextView
+                    android:id="@+id/txtHumidityLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="42dp"
+                    android:text="@string/humidity_label"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTemp" />
+
+                <TextView
+                    android:id="@+id/txtHumidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toStartOf="@+id/txtHumidityLabel"
+                    app:layout_constraintStart_toEndOf="@+id/txtHumidityLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/txtHumidityLabel"
+                    tools:text="28%" />
+
+                <TextView
+                    android:id="@+id/txtWindLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="52dp"
+                    android:text="@string/wind_label"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/txtHumidityLabel"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="@+id/txtHumidityLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/txtHumidity" />
+
+                <TextView
+                    android:id="@+id/txtWind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toStartOf="@+id/txtWindLabel"
+                    app:layout_constraintStart_toEndOf="@+id/txtWindLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWindLabel"
+                    tools:text="0" />
+
+                <TextView
+                    android:id="@+id/txtUvLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:text="@string/uv_label"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtHumidityLabel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/txtHumidityLabel" />
+
+                <TextView
+                    android:id="@+id/txtUv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toStartOf="@+id/txtUvLabel"
+                    app:layout_constraintStart_toEndOf="@+id/txtUvLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/txtUvLabel"
+                    tools:text="0" />
+
+                <TextView
+                    android:id="@+id/txtPressureLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pressure_label"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtWindLabel"
+                    app:layout_constraintEnd_toEndOf="@+id/txtUvLabel"
+                    app:layout_constraintStart_toStartOf="@+id/txtUvLabel"
+                    app:layout_constraintTop_toTopOf="@+id/txtWindLabel" />
+
+                <TextView
+                    android:id="@+id/txtPressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toStartOf="@+id/txtPressureLabel"
+                    app:layout_constraintStart_toEndOf="@+id/txtPressureLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPressureLabel"
+                    tools:text="916.4 m.Bar" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </FrameLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

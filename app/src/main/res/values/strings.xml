@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Weather</string>
+
+    <string name="weather_fragment">Previsão</string>
+
+    <string name="city_hint">Cidade</string>
+    <string name="search_label">Pesquisar</string>
+    <string name="msg_required_field">Campo obrigatório</string>
+
+    <string name="error_load_weather">Não foi possível carregar a previsão do tempo</string>
+    <string name="humidity_label">Umidade</string>
+    <string name="uv_label">Índice UV</string>
+    <string name="wind_label">Vel. do vento</string>
+    <string name="pressure_label">Pressão</string>
+    <string name="city_empty_error">Informe uma cidade</string>
 </resources>
